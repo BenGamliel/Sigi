@@ -25,3 +25,13 @@ bool Talk::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> 
 	//std::cout << "_calcultionCount=" << _calcultionCount << std::endl;
 	return true;
 }
+
+const size_t Talk::checkMood() const
+{
+	if (_calcultionCount!=0)
+	{
+		return (_name.size()%2)+2;
+	}
+
+	return (_name.size()%2);
+}

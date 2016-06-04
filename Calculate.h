@@ -28,7 +28,7 @@ public:
  * which holds the count of the calculations
  *
  */
-	Calculate(const size_t commandIndex,size_t *calcultionCount);
+	Calculate(const size_t commandIndex,size_t &calcultionCount);
 	virtual ~Calculate();
 
 		// Functions
@@ -45,14 +45,14 @@ public:
  *
  * @ return - true for success, false for error.
  */
-	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input){return true;}
+	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
 
 private:
 	enum Results {ok=0};
 	enum Errors {complicated=0};
 
 		// Variables
-	size_t *_calcultionCount;
+	size_t &_calcultionCount;
 
 	// Functions
 	int add(const unsigned int numA,const unsigned int numB,const int factor) const;

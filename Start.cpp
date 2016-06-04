@@ -25,3 +25,9 @@ bool Start::execute(size_t &commandIndex,size_t &printIndex,std::vector<string> 
 
 	return true;
 }
+
+void Start::wakeUp()
+{
+	*_isAwake=true;
+	_name="Noam";
+}

@@ -7,7 +7,7 @@
 
 #include "Calculate.h"
 
-Calculate::Calculate(const size_t commandIndex, size_t *calcultionCount):
+Calculate::Calculate(const size_t commandIndex, size_t &calcultionCount):
 SigiCommand(commandIndex),_calcultionCount(calcultionCount)
 {
 	std::cout << "Calculate::Calculate(size_t *calcultionCount)" << std::endl;
@@ -20,4 +20,10 @@ Calculate::~Calculate() {
 int Calculate::add(const unsigned int numA,const unsigned int numB,const int factor) const
 {
 	return numA+(factor*numB);
+}
+
+bool Calculate::execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input)
+{
+	_calcultionCount++;
+	return true;
 }

@@ -17,7 +17,7 @@ public:
 	virtual ~Start();
 
 	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
-	void wakeUp() { *_isAwake=true;}
+	void wakeUp();
 
 
 private:

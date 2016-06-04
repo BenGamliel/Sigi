@@ -20,7 +20,7 @@ public:
 	bool execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input);
 
 private:
-	enum Moods {good=0,bad,lucky,bored};
+	enum Moods {good=0,lucky,bad,bored};
 	enum Errors {};
 
 		// Variables
@@ -28,7 +28,7 @@ private:
 	const string &_name;
 
 		// Functions
-	const size_t checkMood() {return bad;} // TODO: write the function
+	const size_t checkMood() const;
 
 
 };

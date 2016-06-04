@@ -12,7 +12,7 @@ SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_nam
 	//std::cout << "SigiMapper::SigiMapper()" << std::endl;
 
 	_commands[start] = new Start(start,&_isAwake,_name);
-	_commands[calculate] = new Calculate(calculate,&_calcultionCount);
+	_commands[calculate] = new Calculate(calculate,_calcultionCount);
 	_commands[talk] = new Talk(talk,_calcultionCount,_name);
 	_commands[sing] = new Sing(sing,_calcultionCount);
 }
@@ -32,8 +32,6 @@ void SigiMapper::command(std::string command)
 	size_t printIndex, commandIndex=this->findCommand(command);
 	std::vector<string> input;
 
-	std::cout << _isAwake << std::endl;
-
 	if (isReadyToLaunch(commandIndex))
 	{
 		bool activate=_commands[commandIndex]->execute(commandIndex,printIndex,input);
@@ -52,7 +50,6 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 {
 	if(((!_isAwake)&&(commandIndex==start))||(_isAwake))
 	{
-//		if ((_isAwake)&&(commandIndex!=start))
 		return true;
 	}
 	else
@@ -90,7 +87,7 @@ string const SigiMapper::_prints[end+1][4] =
 {
 		{},
 		{"Hey <Name>!"},
-		{"Great!","I have a bad day!","I am feeling lucky!","I am bored!"},
+		{"Great!","I am feeling lucky!","I have a bad day!","I am bored!"},
 		{
 				"Mamma mia, here I go again\n"
 				"My my, how can I resist you",
