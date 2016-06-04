@@ -6,7 +6,7 @@
  */
 
 #include "Sing.h"
-
+/*
 Sing::Sing(const size_t commandIndex, const size_t &calcultionCount)
 :SigiCommand(commandIndex),_calcultionCount(calcultionCount)
 {
@@ -26,3 +26,4 @@ bool Sing::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> 
 
 	return true;
 }
+*/

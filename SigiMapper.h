@@ -12,29 +12,31 @@
 #include <string>
 #include <vector>
 #include "SigiCommand.h"
-#include "Start.h"
+#include "StartCommand.h"
 #include "Calculate.h"
 #include "Talk.h"
 #include "Sing.h"
 using std::string;
+enum Commands {start,talk,sing,calculate,end};
 
 class SigiMapper {
 public:
+
 		// Constructors
 	SigiMapper();
-	SigiMapper()
 	virtual ~SigiMapper();
 
 		// Functions
-	string command(std::string command);
+
+	Commands getCommand(string inCommand);
 	void findCommand(string command);
 	std::vector <string> split (string command);
 
 
 private:
-	enum Commands {start,talk,sing,calculate,end};
+
 		// Variables
-	SigiCommand** _commands;
+	//SigiCommand** _commands;
 	bool _isAwake;
 	string _name;
 	size_t _calcultionCount;

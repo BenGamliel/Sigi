@@ -27,3 +27,4 @@ bool Calculate::execute(size_t &commandIndex,size_t &printIndex,std::vector<stri
 	_calcultionCount++;
 	return true;
 }
+

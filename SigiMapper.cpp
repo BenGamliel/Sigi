@@ -6,6 +6,7 @@
  */
 
 #include "SigiMapper.h"
+#include "StartCommand.h"
 using namespace std;
 /*
 SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_name(""),_calcultionCount(0)
@@ -19,6 +20,11 @@ SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_nam
 }
 
 */
+SigiMapper::SigiMapper()
+{
+	_calcultionCount=0; //  when end change the value to zero again
+	//
+}
 
 SigiMapper::~SigiMapper()
 {
@@ -49,22 +55,40 @@ void SigiMapper::command(string command)
 	}
 }
 */
-
-void SigiMapper::findCommand(string command) //will find the command it self
+Commands SigiMapper ::getCommand(string inCommand)
 {
-	std::vector <string> tempVec=split(command);
-	for(Commands index=start; index<=end;index++)
+	for(Commands index=start; index<=end; index++)
 	{
-
-		if (tempVec[0].find(_commandList[index]))
+		if(inCommand.find(_commandList[index]))
 		{
-			if(index==start)
-			{
-				StartCommand(_isAwake=true,tempVec[1]);
-			}
-			bool isReady=isReadyToLaunch(index);
+			return index;
 		}
 	}
+
+}
+
+void SigiMapper::findCommand(string command) //will find the command it self and make
+{
+	std::vector <string> tempVec=split(command);
+	Commands inCommand=getCommand(tempVec[0]);
+	switch (inCommand)
+	{
+			case(start):
+				StartCommand commandstart(_isAwake,tempVec[1]);
+				_isAwake=commandstart.execute();
+				if(_isAwake)// no else the execute already handle it if _isawake = false
+				{
+				_name=tempVec[1];
+				_calcultionCount++;
+				}
+			case(sing):
+			case(talk):
+			case(calculate):
+			case(end):
+
+	}
+
+
 
 
  // can't match a command -> going to error with 0- to print unknow command
@@ -91,16 +115,9 @@ std::vector <string> SigiMapper::split(string command)
 
 	 return tempVec;
 }
-string SigiMapper::command(std::string command,size_t commandNumber)// will separate from the command
-// and input
-{
-	std::vector <string> VecCommand const;
-	split(command=split(<<))
-	std::string inPutCommand=command.substr(temp); // getting the input part after the command
-	return inPutCommand;
 
-}
 
+/*
 bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 {
 	if(((!_isAwake)&&(commandIndex==start))||(_isAwake)) //verify the command if awake continue if not see if awake
@@ -113,6 +130,7 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 	}
 	return false;
 }
+*/
 
 string const SigiMapper::_commandList[] =
 {		"Hey Sigi!",

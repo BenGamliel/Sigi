@@ -9,24 +9,24 @@
 #define STARTCOMMAND_H_
 
 #include "SigiCommand.h"
+using namespace std;
+enum startstatus {isok,nametoolong,nametooshort,alreadyawake};
 
 class StartCommand : public SigiCommand {
 public:
 	//StartCommand(size_t commandIndex, string name = "");
-	StartCommand(bool* isAwake, string &name)
+	StartCommand(bool isAwake,string name);
 	virtual ~StartCommand();
 
-	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
-	void wakeUp();
+	bool execute();
+	startstatus wakeUp();
+
 
 
 private:
-	enum GoodMorning {ok=0};
-	enum Errors {};
+	//enum GoodMorning {ok=0};
+//	enum Errors {};
 	// Variables
-	bool *_isAwake;
-	string &_name;
-
 	// Functions
 
 };

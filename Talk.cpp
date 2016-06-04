@@ -6,7 +6,7 @@
  */
 
 #include "Talk.h"
-
+/*
 Talk::Talk(const size_t commandIndex, const size_t &calcultionCount, const string &name) :
 	SigiCommand(commandIndex), _calcultionCount(calcultionCount), _name(name)
 	{
@@ -35,3 +35,4 @@ const size_t Talk::checkMood() const
 
 	return (_name.size()%2);
 }
+*/

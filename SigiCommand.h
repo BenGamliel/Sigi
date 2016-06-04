@@ -15,24 +15,23 @@ using std::string;
 
 class SigiCommand {
 public:
-//	SigiCommand(size_t commandIndex, const string &name);
-	SigiCommand(size_t commandIndex);
+	SigiCommand(bool isAwake, string name);
 	virtual ~SigiCommand();
 
-	virtual bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input)=0;
-//	virtual bool execute(size_t &commandIndex,size_t &printIndex,
-//			std::vector<string> input)=0;
+	virtual bool execute()=0;
+
 
 protected:
-	virtual size_t getCommandIndex() const {return _commandIndex;}
+//	virtual size_t getCommandIndex() const {return _commandIndex;}
 //	virtual string getName() const {return _name;}
 
 
 
-private:
-	const size_t _commandIndex;
-//	const string &_name;
 
+private:
+	//const size_t _commandIndex;
+	bool _isAwake;
+	string _name;
 	//SigiCommand():_commandIndex(0),_name(""){} // TODO: Make it work
 };
 
