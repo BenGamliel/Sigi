@@ -22,14 +22,17 @@ class SigiMapper {
 public:
 		// Constructors
 	SigiMapper();
+	SigiMapper()
 	virtual ~SigiMapper();
 
 		// Functions
-	void command(std::string command);
+	string command(std::string command);
+	void findCommand(string command);
+	std::vector <string> split (string command);
 
 
 private:
-	enum Commands {start=1,talk,sing,calculate,end};
+	enum Commands {start,talk,sing,calculate,end};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;
@@ -42,7 +45,6 @@ private:
 	static string const _prints[end+1][4];
 
 		// Functions
-	size_t findCommand(string command);
 	//size_t getCalcultionCount() const {return _calcultionCount;}
 	bool isReadyToLaunch(size_t commandIndex);
 

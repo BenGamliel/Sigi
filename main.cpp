@@ -12,7 +12,7 @@ int main()
 	SigiMapper sigi;
 	string n;
 	while (std::cin >> n)
-		sigi.command(n);
+		sigi.findCommand(n);
 
 	return 0;
 }
