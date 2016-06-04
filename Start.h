@@ -12,19 +12,20 @@
 
 class Start : public SigiCommand {
 public:
-	//Start(unsigned int commandIndex, string name = "");
-	Start(const unsigned int commandIndex, bool* isAwake, string name = "");
+	//Start(size_t commandIndex, string name = "");
+	Start(const size_t commandIndex, bool* isAwake, string &name);
 	virtual ~Start();
 
-	bool execute(unsigned int &commandIndex,unsigned int &printIndex);
+	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
 	void wakeUp() { *_isAwake=true;}
 
 
 private:
-	enum prints {ok=0};
-	enum errors {};
+	enum GoodMorning {ok=0};
+	enum Errors {};
 	// Variables
 	bool *_isAwake;
+	string &_name;
 
 	// Functions
 

@@ -4,10 +4,10 @@
  * This class is responsible of the execution of the command calculate.
  * It is responsible to update the calculation count at SigiMapper.
  *
- * Calculate(const unsigned int commandIndex,unsigned int *calcultionCount) -
+ * Calculate(const size_t commandIndex,size_t *calcultionCount) -
  * The Constructor
  *
- * bool execute(unsigned int &commandIndex,unsigned int &printIndex) -
+ * bool execute(size_t &commandIndex,size_t &printIndex) -
  * Responsible to the execution of the calculation.
  *
  */
@@ -20,7 +20,7 @@
 class Calculate : public SigiCommand {
 public:
 /*
- * Calculate(const unsigned int commandIndex,unsigned int *calcultionCount) -
+ * Calculate(const size_t commandIndex,size_t *calcultionCount) -
  * The Constructor
  *
  * @param commandIndex - sets the numeric index of the command
@@ -28,14 +28,14 @@ public:
  * which holds the count of the calculations
  *
  */
-	Calculate(const unsigned int commandIndex,unsigned int *calcultionCount);
+	Calculate(const size_t commandIndex,size_t *calcultionCount);
 	virtual ~Calculate();
 
 		// Functions
 
 /*
  *
- * bool execute(unsigned int &commandIndex,unsigned int &printIndex) -
+ * bool execute(size_t &commandIndex,size_t &printIndex) -
  * Responsible to the execution of the calculation.
  *
  * @param commandIndex - The function updates this variable to hold
@@ -45,11 +45,17 @@ public:
  *
  * @ return - true for success, false for error.
  */
-	bool execute(unsigned int &commandIndex,unsigned int &printIndex){return true;}
+	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input){return true;}
 
 private:
+	enum Results {ok=0};
+	enum Errors {complicated=0};
+
 		// Variables
-	unsigned int *_calcultionCount;
+	size_t *_calcultionCount;
+
+	// Functions
+	int add(const unsigned int numA,const unsigned int numB,const int factor) const;
 };
 
 #endif /* CALCULATE_H_ */

@@ -7,17 +7,17 @@
 
 #include "Talk.h"
 
-Talk::Talk(const unsigned int commandIndex, const unsigned int &calcultionCount) :
-	SigiCommand(commandIndex), _calcultionCount(calcultionCount)
+Talk::Talk(const size_t commandIndex, const size_t &calcultionCount, const string &name) :
+	SigiCommand(commandIndex), _calcultionCount(calcultionCount), _name(name)
 	{
-		std::cout << "Talk::Talk(unsigned int commandIndex)" << std::endl;
+		std::cout << "Talk::Talk(const size_t commandIndex)" << std::endl;
 	}
 
 Talk::~Talk() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Talk::execute(unsigned int &commandIndex,unsigned int &printIndex)
+bool Talk::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input)
 {
 	commandIndex=this->getCommandIndex();
 	printIndex=this->checkMood();

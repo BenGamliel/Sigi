@@ -7,16 +7,16 @@
 
 #include "Start.h"
 
-Start::Start(const unsigned int commandIndex,bool* isAwake, string name) : SigiCommand(commandIndex,name), _isAwake(isAwake)
+Start::Start(const size_t commandIndex,bool* isAwake, string& name) : SigiCommand(commandIndex), _isAwake(isAwake),_name(name)
 {
-	std::cout << "Start::Start(unsigned int commandIndex, string name)" << std::endl;
+	std::cout << "Start::Start(size_t commandIndex, string name)" << std::endl;
 }
 
 Start::~Start() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Start::execute(unsigned int &commandIndex,unsigned int &printIndex)
+bool Start::execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input)
 {
 	this->wakeUp();
 

@@ -15,12 +15,8 @@
 #include "Start.h"
 #include "Calculate.h"
 #include "Talk.h"
+#include "Sing.h"
 using std::string;
-
-namespace Mapper
-{
-
-}
 
 class SigiMapper {
 public:
@@ -33,12 +29,12 @@ public:
 
 
 private:
-	enum COMMANDS {start=1,talk,sing,calculate,end};
+	enum Commands {start=1,talk,sing,calculate,end};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;
 	string _name;
-	unsigned int _calcultionCount;
+	size_t _calcultionCount;
 
 		// String Arrays
 	static string const _commandList[];
@@ -46,8 +42,9 @@ private:
 	static string const _prints[end+1][4];
 
 		// Functions
-	unsigned int findCommand(string command){return start;}
-	//unsigned int getCalcultionCount() const {return _calcultionCount;}
+	size_t findCommand(string command);
+	//size_t getCalcultionCount() const {return _calcultionCount;}
+	bool isReadyToLaunch(size_t commandIndex);
 
 };
 

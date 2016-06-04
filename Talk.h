@@ -12,22 +12,23 @@
 
 class Talk : public SigiCommand {
 public:
-	Talk(const unsigned int commandIndex, const unsigned int &calcultionCount);
+	Talk(const size_t commandIndex, const size_t &calcultionCount, const string &name);
 
 	virtual ~Talk();
 
 		// Functions
-	bool execute(unsigned int &commandIndex,unsigned int &printIndex);
+	bool execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input);
 
 private:
-	enum prints {good=0,bad,lucky,bored};
-	enum errors {};
+	enum Moods {good=0,bad,lucky,bored};
+	enum Errors {};
 
 		// Variables
-	const unsigned int &_calcultionCount;
+	const size_t &_calcultionCount;
+	const string &_name;
 
 		// Functions
-	const unsigned int checkMood() {return bad;} // TODO: write the function
+	const size_t checkMood() {return bad;} // TODO: write the function
 
 
 };

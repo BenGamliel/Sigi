@@ -10,7 +10,9 @@
 int main()
 {
 	SigiMapper sigi;
-	sigi.command("hi");
+	string n;
+	while (std::cin >> n)
+		sigi.command(n);
 
 	return 0;
 }
