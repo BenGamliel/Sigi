@@ -22,7 +22,7 @@ int Calculate::add(const unsigned int numA,const unsigned int numB,const int fac
 	return numA+(factor*numB);
 }
 
-bool Calculate::execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input)
+bool Calculate::execute(size_t &printIndex,std::vector<string> &input)
 {
 	input.clear();
 	unsigned int numA=5,numB=3;

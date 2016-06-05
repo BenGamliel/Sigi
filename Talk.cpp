@@ -17,15 +17,11 @@ Talk::~Talk() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Talk::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input)
+bool Talk::execute(size_t &printIndex, std::vector<string> &input)
 {
-//	commandIndex=this->getCommandIndex();
-//	printIndex=this->checkMood();
 
 	std::cout << _prints[this->checkMood()] << std::endl;
 
-
-	//std::cout << "_calcultionCount=" << _calcultionCount << std::endl;
 	return true;
 }
 

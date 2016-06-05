@@ -19,7 +19,7 @@ public:
 	SigiCommand(size_t commandIndex);
 	virtual ~SigiCommand();
 
-	virtual bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input)=0;
+	virtual bool execute(size_t &printIndex,std::vector<string> &input)=0;
 //	virtual bool execute(size_t &commandIndex,size_t &printIndex,
 //			std::vector<string> input)=0;
 

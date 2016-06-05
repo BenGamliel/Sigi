@@ -17,7 +17,7 @@ public:
 	virtual ~Talk();
 
 		// Functions
-	bool execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input);
+	bool execute(size_t &printIndex, std::vector<string> &input);
 
 private:
 	enum Moods {good=0,lucky,bad,bored};

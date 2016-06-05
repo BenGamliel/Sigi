@@ -34,11 +34,8 @@ void SigiMapper::command(std::string command)
 
 	if (isReadyToLaunch(commandIndex))
 	{
-		bool activate=_commands[commandIndex]->execute(commandIndex,printIndex,input);
-//		if(activate)
-//		{
-//			std::cout << _prints[commandIndex][printIndex] << std::endl;
-//		}
+		bool activate=_commands[commandIndex]->execute(printIndex,input);
+
 		if(!activate)
 		{
 			std::cerr << _errors[commandIndex][printIndex] << std::endl;
@@ -48,7 +45,11 @@ void SigiMapper::command(std::string command)
 
 bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 {
-	if(((!_isAwake)&&(commandIndex==start))||(_isAwake))
+	if ((_isAwake)&&(commandIndex>end))
+	{
+		std::cerr << _errors[0][1] << std::endl;
+	}
+	else if(((!_isAwake)&&(commandIndex==start))||(_isAwake))
 	{
 		return true;
 	}

@@ -45,7 +45,7 @@ public:
  *
  * @ return - true for success, false for error.
  */
-	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
+	bool execute(size_t &printIndex,std::vector<string> &input);
 
 private:
 	enum Results {ok=0};

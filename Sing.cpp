@@ -19,7 +19,7 @@ Sing::~Sing() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Sing::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input)
+bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 {
 	Songs song = mammaMia;
 
