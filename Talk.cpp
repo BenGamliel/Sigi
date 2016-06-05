@@ -19,7 +19,6 @@ Talk::~Talk() {
 
 bool Talk::execute(size_t &printIndex, std::vector<string> &input)
 {
-
 	std::cout << _prints[this->checkMood()] << std::endl;
 
 	return true;

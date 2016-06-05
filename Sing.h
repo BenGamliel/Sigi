@@ -19,12 +19,17 @@ public:
 	bool execute(size_t &printIndex, std::vector<string> &input);
 
 private:
-	enum Songs {mammaMia=0,saysaysay=2};
+	enum Songs {MAMMA_MIA=0,SAY,NUMBER_OF_SONGS};
+	enum Errors {NO_SONG_NAME=0,DONT_KNOW};
 		// Variables
 	const size_t &_calcultionCount;
 
 		// String Arrays
 	static string const _prints[];
+	static string const _songList[];
+
+		// Functions
+	size_t getSong(const string name);
 };
 
 #endif /* SING_H_ */

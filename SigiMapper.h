@@ -30,7 +30,7 @@ public:
 
 
 private:
-	enum Commands {start=1,talk,sing,calculate,end};
+	enum Commands {start=0,calculate,talk,sing,end};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;
@@ -39,7 +39,7 @@ private:
 
 		// String Arrays
 	static string const _commandList[];
-	static string const _errors[end+1][4];
+	static string const _errors[end+2][4];
 
 		// Functions
 	size_t findCommand(string command);

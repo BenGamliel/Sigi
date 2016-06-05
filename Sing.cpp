@@ -21,11 +21,33 @@ Sing::~Sing() {
 
 bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 {
-	Songs song = mammaMia;
+	if(input.size()<2)
+	{
+		printIndex=NO_SONG_NAME;
+		return false;
+	}
 
-	std::cout << _prints[song+(_calcultionCount%2)] << std::endl;
+	size_t song = getSong(input[1]);
+	if (song<NUMBER_OF_SONGS)
+	{
+		std::cout << (song*2)+(_calcultionCount%2) << std::endl;
+		std::cout << _prints[(song*2)+(_calcultionCount%2)] << std::endl;
+		return true;
+	}
 
-	return true;
+	printIndex=DONT_KNOW;
+	return false;
+}
+
+size_t Sing::getSong(const string song)
+{
+	size_t i=0;
+	while(i<NUMBER_OF_SONGS)
+	{
+		song.compare(_songList[i]);
+		i++;
+	}
+	return i;
 }
 
 string const Sing::_prints[] =
@@ -41,4 +63,10 @@ string const Sing::_prints[] =
 
 		"Say, say, say what you want\n"
 		"But don't play games with my affection"
+};
+
+string const Sing::_songList[] =
+{
+		"Say Say Say",
+		"Mamma Mia"
 };

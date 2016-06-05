@@ -51,7 +51,7 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 {
 	if ((_isAwake)&&(commandIndex>end))
 	{
-		std::cerr << _errors[0][1] << std::endl;
+		std::cerr << _errors[end+1][1] << std::endl;
 	}
 	else if(((!_isAwake)&&(commandIndex==start))||(_isAwake))
 	{
@@ -59,7 +59,7 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 	}
 	else
 	{
-		std::cerr << _errors[0][0] << std::endl;
+		std::cerr << _errors[end+1][0] << std::endl;
 	}
 	return false;
 }
@@ -112,15 +112,15 @@ size_t SigiMapper::getCommandIndex(const string inCommand)
 }
 
 string const SigiMapper::_commandList[] =
-{"","Hey Sigi! ","Sigi Calculate Please: ","Good Bye Sigi!","How are you Sigi?","I want to hear "};
+{"Hey Sigi! ","Sigi Calculate Please: ","How are you Sigi?","I want to hear ","Good Bye Sigi!"};
 
-string const SigiMapper::_errors[end+1][4] =
+string const SigiMapper::_errors[end+2][4] =
 {
-		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"},
 		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"},
 		{},
 		{},
 		{"TOO COMPLICATED FOR ME"},
-		{}
+		{},
+		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"},
 };
 
