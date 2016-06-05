@@ -27,10 +27,14 @@ SigiMapper::~SigiMapper()
 
 }
 
-void SigiMapper::command(std::string command)
+void SigiMapper::command(const string command)
 {
-	size_t printIndex, commandIndex=this->findCommand(command);
-	std::vector<string> input;
+	size_t printIndex;
+
+	std::vector<string> input = *new std::vector<string>;
+	split(input,command);
+	size_t commandIndex=this->getCommandIndex(input[0]);
+//	std::cout<<this->getCommandIndex(input[0])<<std::endl;
 
 	if (isReadyToLaunch(commandIndex))
 	{
@@ -68,28 +72,47 @@ size_t SigiMapper::findCommand(string command)
 	if (command=="talk") return talk;
 
 	return end+1;
-
-//	std::vector <string> tempVec=split(command);
-//		for(Commands index=start; index<=end;index++)
-//		{
-//
-//			if (tempVec[0].find(_commandList[index]))
-//			{
-//				if(index==start)
-//				{
-//					StartCommand(_isAwake=true,tempVec[1]);
-//				}
-//				bool isReady=isReadyToLaunch(index);
-//			}
-//		}
-//
-//
-//	 // can't match a command -> going to error with 0- to print unknow command
 }
 
+void SigiMapper::split(std::vector<string> &tempVec,string command)
+{
+	 size_t pos;
+	 size_t startpos=0;
+	 while(startpos<command.size())
+	 {
+		 pos=command.find ("<<",startpos);
+		 if(pos==string::npos)
+		 {
+			 tempVec.push_back(command.substr(startpos));
+			 break;
+		 }
+		 else
+		 {
+			 tempVec.push_back(command.substr(startpos,pos));
+			 startpos=pos+2;
+		 }
+	 }
+//Temp printing
+//	 for (size_t i=0;i<tempVec.size();i++)
+//		 std::cout<<tempVec[i]<<std::endl;
+}
+
+size_t SigiMapper::getCommandIndex(const string inCommand)
+{
+//	std::cout<<inCommand<<std::endl;
+	for(size_t index=start; index<=end; index++)
+	{
+		if(inCommand.compare(_commandList[index])==0)
+		{
+			return index;
+		}
+	}
+	return end+1;
+
+}
 
 string const SigiMapper::_commandList[] =
-{"Hey Sigi!","Sigi Calculate Please:","Good Bye Sigi!","How are you Sigi?","I want to hear"};
+{"","Hey Sigi! ","Sigi Calculate Please: ","Good Bye Sigi!","How are you Sigi?","I want to hear "};
 
 string const SigiMapper::_errors[end+1][4] =
 {
@@ -101,24 +124,3 @@ string const SigiMapper::_errors[end+1][4] =
 		{}
 };
 
-string const SigiMapper::_prints[end+1][4] =
-{
-		{},
-		{"Hey <Name>!"},
-		{"Great!","I am feeling lucky!","I have a bad day!","I am bored!"},
-		{
-				"Mamma mia, here I go again\n"
-				"My my, how can I resist you",
-
-				"Mamma mia, does it show again\n"
-				"My my, just how much I've missed you",
-
-				"What can I do\nGirl to get through to you\n"
-				"Cause I love you, baby",
-
-				"Say, say, say what you want\n"
-				"But don't play games with my affection"
-		},
-		{"<Name>, the result is <Number>."},
-		{}
-};

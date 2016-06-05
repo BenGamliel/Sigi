@@ -9,8 +9,9 @@
 #define SIGIMAPPER_H_
 
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <vector>
+#include <stdio.h>
 #include "SigiCommand.h"
 #include "Start.h"
 #include "Calculate.h"
@@ -25,7 +26,7 @@ public:
 	virtual ~SigiMapper();
 
 		// Functions
-	void command(std::string command);
+	void command(const string command);
 
 
 private:
@@ -39,12 +40,13 @@ private:
 		// String Arrays
 	static string const _commandList[];
 	static string const _errors[end+1][4];
-	static string const _prints[end+1][4];
 
 		// Functions
 	size_t findCommand(string command);
 	//size_t getCalcultionCount() const {return _calcultionCount;}
 	bool isReadyToLaunch(size_t commandIndex);
+	void split(std::vector<string> &tempVec,string command);
+	size_t getCommandIndex(string inCommand);
 
 };
 
