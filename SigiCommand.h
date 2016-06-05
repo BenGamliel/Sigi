@@ -30,7 +30,7 @@ protected:
 
 private:
 	//const size_t _commandIndex;
-	bool _isAwake;
+    bool* _isAwake;
 	string _name;
 	//SigiCommand():_commandIndex(0),_name(""){} // TODO: Make it work
 };

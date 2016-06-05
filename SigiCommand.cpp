@@ -7,9 +7,9 @@
 
 #include "SigiCommand.h"
 
-SigiCommand::SigiCommand(bool isAwake, string name)
+SigiCommand::SigiCommand(bool *  isAwake, string name)
 {
-	_isAwake=isAwake;
+	_isAwake*=isAwake;
 	_name=name;
 	//std::cout << "SigiCommand::SigiCommand(size_t commandIndex, string name)" << std::endl;
 }

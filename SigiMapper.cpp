@@ -64,6 +64,7 @@ Commands SigiMapper ::getCommand(string inCommand)
 			return index;
 		}
 	}
+	return end;
 
 }
 
@@ -74,21 +75,36 @@ void SigiMapper::findCommand(string command) //will find the command it self and
 	switch (inCommand)
 	{
 			case(start):
-				StartCommand commandstart(_isAwake,tempVec[1]);
+				StartCommand *commandstart= new StartCommand (_isAwake,tempVec[1]);
 				_isAwake=commandstart.execute();
 				if(_isAwake)// no else the execute already handle it if _isawake = false
 				{
 				_name=tempVec[1];
-				_calcultionCount++;
+			//	_calcultionCount++;
 				}
+
 			case(sing):
+				SigiSing sigising(_isAwake,_calcultionCount,tempVec[1]);
+				if(_isAwake)
+				{
+					bool temp=sigising.execute();
+					if(temp)
+					{
+						_calcultionCount++;
+					}
+
+				}
+				else
+				{
+					cout <<"SIGI IS ON SLEEP MODE"<< endl:
+				}
 			case(talk):
 			case(calculate):
 			case(end):
 
 	}
 
-
+}
 
 
  // can't match a command -> going to error with 0- to print unknow command
@@ -100,7 +116,7 @@ std::vector <string> SigiMapper::split(string command)
 	 size_t startpos=0;
 	 while(startpos<command.size())
 	 {
-		 pos=command.find(startpos,"<<");
+		 pos=command.find ("<<",startpos);
 		 if(pos==string::npos)
 		 {
 			 tempVec.push_back(command.substr(startpos));
@@ -114,7 +130,7 @@ std::vector <string> SigiMapper::split(string command)
 	 }
 
 	 return tempVec;
-}
+}1
 
 
 /*
@@ -162,19 +178,6 @@ string const SigiMapper::_prints[end][4] =
 		"Great!",
 		"I am feeling lucky!",
 		"I have a bad day!","I am bored!"
-		},
-		{
-				"Mamma mia, here I go again\n"
-				"My my, how can I resist you",
-
-				"Mamma mia, does it show again\n"
-				"My my, just how much I've missed you",
-
-				"What can I do\nGirl to get through to you\n"
-				"Cause I love you, baby",
-
-				"Say, say, say what you want\n"
-				"But don't play games with my affection"
 		},
 		{"<Name>, the result is <Number>."},
 		{}

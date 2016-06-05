@@ -15,9 +15,9 @@
 #include "StartCommand.h"
 #include "Calculate.h"
 #include "Talk.h"
-#include "Sing.h"
+#include "SigiSing.h"
 using std::string;
-enum Commands {start,talk,sing,calculate,end};
+enum Commands {start,sing,talk,calculate,end};
 
 class SigiMapper {
 public:
@@ -38,7 +38,7 @@ private:
 		// Variables
 	//SigiCommand** _commands;
 	bool _isAwake;
-	string _name;
+	//string _name;
 	size_t _calcultionCount;
 
 		// String Arrays

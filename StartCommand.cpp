@@ -51,7 +51,7 @@ bool StartCommand::execute() // needs to be modify to match wakeup
 
 
 
-	//return true;
+	return true;
 	//commandIndex=this->getCommandIndex();
 //	printIndex=this->ok;
 }
