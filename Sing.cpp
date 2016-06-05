@@ -30,7 +30,6 @@ bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 	size_t song = getSong(input[1]);
 	if (song<NUMBER_OF_SONGS)
 	{
-		std::cout << (song*2)+(_calcultionCount%2) << std::endl;
 		std::cout << _prints[(song*2)+(_calcultionCount%2)] << std::endl;
 		return true;
 	}
@@ -44,7 +43,11 @@ size_t Sing::getSong(const string song)
 	size_t i=0;
 	while(i<NUMBER_OF_SONGS)
 	{
-		song.compare(_songList[i]);
+		if ((song.compare(_songList[i])==0))
+		{
+			return i;
+		}
+
 		i++;
 	}
 	return i;
@@ -67,6 +70,7 @@ string const Sing::_prints[] =
 
 string const Sing::_songList[] =
 {
-		"Say Say Say",
-		"Mamma Mia"
+		"Mamma Mia",
+		"Say Say Say"
+
 };

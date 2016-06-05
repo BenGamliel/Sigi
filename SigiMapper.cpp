@@ -116,11 +116,11 @@ string const SigiMapper::_commandList[] =
 
 string const SigiMapper::_errors[end+2][4] =
 {
-		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"},
-		{},
-		{},
-		{"TOO COMPLICATED FOR ME"},
-		{},
-		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"},
+		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"}, //start
+		{"TOO COMPLICATED FOR ME"}, //calculate
+		{}, //talk
+		{"YOUR SONG NAME IS MISSING","I AM NOT FAMILIAR WITH THIS SONG"}, //sing
+		{}, //end
+		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"}, //general
 };
 
