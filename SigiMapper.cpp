@@ -12,7 +12,7 @@ SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_nam
 	//std::cout << "SigiMapper::SigiMapper()" << std::endl;
 
 	_commands[start] = new Start(start,&_isAwake,_name);
-	_commands[calculate] = new Calculate(calculate,_calcultionCount);
+	_commands[calculate] = new Calculate(calculate,_calcultionCount,_name);
 	_commands[talk] = new Talk(talk,_calcultionCount,_name);
 	_commands[sing] = new Sing(sing,_calcultionCount);
 }
@@ -35,13 +35,13 @@ void SigiMapper::command(std::string command)
 	if (isReadyToLaunch(commandIndex))
 	{
 		bool activate=_commands[commandIndex]->execute(commandIndex,printIndex,input);
-		if(activate)
+//		if(activate)
+//		{
+//			std::cout << _prints[commandIndex][printIndex] << std::endl;
+//		}
+		if(!activate)
 		{
-			std::cout << _prints[commandIndex][printIndex] << std::endl;
-		}
-		else
-		{
-			std::cout << _errors[commandIndex][printIndex] << std::endl;
+			std::cerr << _errors[commandIndex][printIndex] << std::endl;
 		}
 	}
 }
@@ -67,6 +67,23 @@ size_t SigiMapper::findCommand(string command)
 	if (command=="talk") return talk;
 
 	return end+1;
+
+//	std::vector <string> tempVec=split(command);
+//		for(Commands index=start; index<=end;index++)
+//		{
+//
+//			if (tempVec[0].find(_commandList[index]))
+//			{
+//				if(index==start)
+//				{
+//					StartCommand(_isAwake=true,tempVec[1]);
+//				}
+//				bool isReady=isReadyToLaunch(index);
+//			}
+//		}
+//
+//
+//	 // can't match a command -> going to error with 0- to print unknow command
 }
 
 

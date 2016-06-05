@@ -27,6 +27,9 @@ private:
 	const size_t &_calcultionCount;
 	const string &_name;
 
+		// String Arrays
+	static string const _prints[];
+
 		// Functions
 	const size_t checkMood() const;
 

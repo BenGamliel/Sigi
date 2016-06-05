@@ -19,8 +19,11 @@ Talk::~Talk() {
 
 bool Talk::execute(size_t &commandIndex,size_t &printIndex, std::vector<string> &input)
 {
-	commandIndex=this->getCommandIndex();
-	printIndex=this->checkMood();
+//	commandIndex=this->getCommandIndex();
+//	printIndex=this->checkMood();
+
+	std::cout << _prints[this->checkMood()] << std::endl;
+
 
 	//std::cout << "_calcultionCount=" << _calcultionCount << std::endl;
 	return true;
@@ -35,3 +38,5 @@ const size_t Talk::checkMood() const
 
 	return (_name.size()%2);
 }
+string const Talk::_prints[] =
+{"Great!","I am feeling lucky!","I have a bad day!","I am bored!"};

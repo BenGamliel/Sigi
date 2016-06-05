@@ -30,4 +30,6 @@ void Start::wakeUp()
 {
 	*_isAwake=true;
 	_name="Noam";
+
+	std::cout << "Hey " << _name << "!"<< std::endl;
 }

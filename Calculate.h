@@ -28,7 +28,7 @@ public:
  * which holds the count of the calculations
  *
  */
-	Calculate(const size_t commandIndex,size_t &calcultionCount);
+	Calculate(const size_t commandIndex,size_t &calcultionCount,string const &name);
 	virtual ~Calculate();
 
 		// Functions
@@ -53,9 +53,10 @@ private:
 
 		// Variables
 	size_t &_calcultionCount;
+	string const &_name;
 
 	// Functions
-	int add(const unsigned int numA,const unsigned int numB,const int factor) const;
+	int add(const unsigned int numA,const unsigned int numB,const int factor=1) const;
 };
 
 #endif /* CALCULATE_H_ */
