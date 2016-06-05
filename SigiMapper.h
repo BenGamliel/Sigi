@@ -43,7 +43,6 @@ private:
 
 		// Functions
 	size_t findCommand(string command);
-	//size_t getCalcultionCount() const {return _calcultionCount;}
 	bool isReadyToLaunch(size_t commandIndex);
 	void split(std::vector<string> &tempVec,string command);
 	size_t getCommandIndex(string inCommand);

@@ -30,6 +30,7 @@ bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 	size_t song = getSong(input[1]);
 	if (song<NUMBER_OF_SONGS)
 	{
+//		std::cout << (song*2)+(_calcultionCount%2) << std::endl;
 		std::cout << _prints[(song*2)+(_calcultionCount%2)] << std::endl;
 		return true;
 	}
@@ -65,12 +66,28 @@ string const Sing::_prints[] =
 		"Cause I love you, baby",
 
 		"Say, say, say what you want\n"
-		"But don't play games with my affection"
+		"But don't play games with my affection",
+
+		"Scotty doesn't know,\n"
+		"That Fionna and me,\n"
+		"Do it in my van every Sunday.\n\n"
+		"She tells him she's in church,\n"
+		"But she doesn't go,\n"
+		"Still shes on her knees, and...",
+
+		"Scotty doesn't know, oh.\n"
+		"Scotty doesn't know-oh.\n"
+		"So don't tell Scotty!\n"
+		"Scotty doesn't know,\n"
+		"Scotty doesn't know.\n"
+		"SO DON'T TELL SCOTTY!\n"
+
+
 };
 
 string const Sing::_songList[] =
 {
 		"Mamma Mia",
-		"Say Say Say"
-
+		"Say Say Say",
+		"Scotty"
 };
