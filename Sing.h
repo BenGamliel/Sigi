@@ -12,8 +12,9 @@
 
 class Sing : public SigiCommand {
 public:
-	Sing(const size_t commandIndex, const size_t &calcultionCount);
-	virtual ~Sing();
+	Sing(const size_t commandIndex, const size_t &calcultionCount) :
+		SigiCommand(commandIndex),_calcultionCount(calcultionCount){}
+	virtual ~Sing(){}
 
 		// Functions
 	bool execute(size_t &printIndex, std::vector<string> &input);
@@ -29,7 +30,7 @@ private:
 	static string const _songList[];
 
 		// Functions
-	size_t getSong(const string name);
+	size_t getSong(const string &name) const;
 };
 
 #endif /* SING_H_ */

@@ -12,13 +12,12 @@
 
 class Start : public SigiCommand {
 public:
-	//Start(size_t commandIndex, string name = "");
-	Start(const size_t commandIndex, bool* isAwake, string &name);
-	virtual ~Start();
+	Start(const size_t commandIndex, bool* isAwake, string &name) :
+		SigiCommand(commandIndex), _isAwake(isAwake),_name(name){}
+	virtual ~Start(){}
 
+	// Functions
 	bool execute(size_t &printIndex,std::vector<string> &input);
-	void wakeUp(const string name);
-
 
 private:
 	enum Errors {NO_NAME=0,NAME_TOO_LONG,ALREADY_AWAKE};
@@ -27,7 +26,7 @@ private:
 	string &_name;
 
 	// Functions
-
+	void wakeUp(const string &name);
 };
 
 #endif /* START_H_ */

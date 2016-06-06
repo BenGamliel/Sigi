@@ -14,17 +14,19 @@ SigiMapper::SigiMapper() : _commands(new SigiCommand*[END]),_isAwake(false),_nam
 	_commands[START] = new Start(START,&_isAwake,_name);
 	_commands[calculate] = new Calculate(calculate,_calcultionCount,_name);
 	_commands[talk] = new Talk(talk,_calcultionCount,_name);
-	_commands[sing] = new Sing(sing,_calcultionCount);
-	_commands[END] = new GoodBye(sing,&_isAwake,_name);
+	_commands[SING] = new Sing(SING,_calcultionCount);
+	_commands[END] = new GoodBye(SING,&_isAwake,_name);
 }
 
 SigiMapper::~SigiMapper()
 {
-//	for(size_t commandIndex=0;commandIndex<END;commandIndex++)
-//	{
-//		delete _commands[commandIndex];
-//	}
-//	delete[] _commands;
+	for(size_t commandIndex=0;commandIndex<END;commandIndex++)
+	{
+		delete _commands[commandIndex];
+	}
+	delete[] _commands;
+
+//	delete _commands[END];
 
 }
 

@@ -12,9 +12,11 @@
 
 class Talk : public SigiCommand {
 public:
-	Talk(const size_t commandIndex, const size_t &calcultionCount, const string &name);
+	Talk(const size_t commandIndex, const size_t &calcultionCount,
+			const string &name) : SigiCommand(commandIndex),
+			_calcultionCount(calcultionCount), _name(name){}
 
-	virtual ~Talk();
+	virtual ~Talk(){}
 
 		// Functions
 	bool execute(size_t &printIndex, std::vector<string> &input);

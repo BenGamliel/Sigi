@@ -19,7 +19,6 @@ public:
 	bool execute(size_t &printIndex, std::vector<string> &input);
 
 private:
-	enum Errors {};
 		// Variables
 	bool *_isAwake;
 	const string &_name;

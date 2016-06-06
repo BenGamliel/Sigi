@@ -7,18 +7,6 @@
 
 #include "Sing.h"
 
-Sing::Sing(const size_t commandIndex, const size_t &calcultionCount)
-:SigiCommand(commandIndex),_calcultionCount(calcultionCount)
-{
-
-//	std::cout << "Sing::Sing(const size_t commandIndex)" << std::endl;
-
-}
-
-Sing::~Sing() {
-	// TODO Auto-generated destructor stub
-}
-
 bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 {
 	if(input.size()<2)
@@ -30,7 +18,6 @@ bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 	size_t song = getSong(input[1]);
 	if (song<NUMBER_OF_SONGS)
 	{
-//		std::cout << (song*2)+(_calcultionCount%2) << std::endl;
 		std::cout << _prints[(song*2)+(_calcultionCount%2)] << std::endl;
 		return true;
 	}
@@ -39,7 +26,7 @@ bool Sing::execute(size_t &printIndex, std::vector<string> &input)
 	return false;
 }
 
-size_t Sing::getSong(const string song)
+size_t Sing::getSong(const string &song) const
 {
 	size_t i=0;
 	while(i<NUMBER_OF_SONGS)
@@ -80,7 +67,7 @@ string const Sing::_prints[] =
 		"So don't tell Scotty!\n"
 		"Scotty doesn't know,\n"
 		"Scotty doesn't know.\n"
-		"SO DON'T TELL SCOTTY!\n"
+		"SO DON'T TELL SCOTTY!"
 
 
 };
