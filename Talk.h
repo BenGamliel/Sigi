@@ -22,8 +22,7 @@ public:
 	bool execute(size_t &printIndex, std::vector<string> &input);
 
 private:
-	enum Moods {good=0,lucky,bad,bored};
-	enum Errors {};
+	enum Moods {GOOD=0,LUCKY,BAD,BORED};
 
 		// Variables
 	const size_t &_calcultionCount;

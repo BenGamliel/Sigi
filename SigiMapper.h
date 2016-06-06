@@ -32,7 +32,7 @@ public:
 
 
 private:
-	enum Commands {START=0,calculate,talk,SING,END};
+	enum Commands {START=0,CALCULATE,TALK,SING,END};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;

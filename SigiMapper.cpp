@@ -7,13 +7,12 @@
 
 #include "SigiMapper.h"
 
-SigiMapper::SigiMapper() : _commands(new SigiCommand*[END]),_isAwake(false),_name(""),_calcultionCount(0)
+SigiMapper::SigiMapper() :
+_commands(new SigiCommand*[END+1]),_isAwake(false),_name(""),_calcultionCount(0)
 {
-	//std::cout << "SigiMapper::SigiMapper()" << std::endl;
-
 	_commands[START] = new Start(START,&_isAwake,_name);
-	_commands[calculate] = new Calculate(calculate,_calcultionCount,_name);
-	_commands[talk] = new Talk(talk,_calcultionCount,_name);
+	_commands[CALCULATE] = new Calculate(CALCULATE,_calcultionCount,_name);
+	_commands[TALK] = new Talk(TALK,_calcultionCount,_name);
 	_commands[SING] = new Sing(SING,_calcultionCount);
 	_commands[END] = new GoodBye(SING,&_isAwake,_name);
 }
@@ -25,9 +24,6 @@ SigiMapper::~SigiMapper()
 		delete _commands[commandIndex];
 	}
 	delete[] _commands;
-
-//	delete _commands[END];
-
 }
 
 void SigiMapper::command(const string command)
@@ -42,7 +38,6 @@ void SigiMapper::command(const string command)
 	std::vector<string> input = *new std::vector<string>;
 	split(input,command);
 	size_t commandIndex=this->getCommandIndex(input[0]);
-//	std::cout<<this->getCommandIndex(input[0])<<std::endl;
 
 	if (isReadyToLaunch(commandIndex,input.size()))
 	{
@@ -58,7 +53,8 @@ void SigiMapper::command(const string command)
 bool SigiMapper::isReadyToLaunch(size_t commandIndex,size_t inputSize)
 {
 	if (((_isAwake)&&(commandIndex>END))||
-			((inputSize>1)&&((commandIndex==END)||(commandIndex==talk))))
+			((inputSize>1)&&((commandIndex==END)||(commandIndex==TALK)))||
+			((commandIndex==CALCULATE)&&(inputSize!=4)))
 	{
 		std::cerr << _errors[END+1][1] << std::endl;
 	}
@@ -76,29 +72,25 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex,size_t inputSize)
 void SigiMapper::split(std::vector<string> &tempVec,const string &command)
 {
 	 size_t pos;
-	 size_t STARTpos=0;
-	 while(STARTpos<command.size())
+	 size_t startPos=0;
+	 while(startPos<command.size())
 	 {
-		 pos=command.find ("<<",STARTpos);
+		 pos=command.find ("<<",startPos);
 		 if(pos==string::npos)
 		 {
-			 tempVec.push_back(command.substr(STARTpos));
+			 tempVec.push_back(command.substr(startPos));
 			 break;
 		 }
 		 else
 		 {
-			 tempVec.push_back(command.substr(STARTpos,pos));
-			 STARTpos=pos+2;
+			 tempVec.push_back(command.substr(startPos,pos));
+			 startPos=pos+2;
 		 }
 	 }
-//Temp printing
-//	 for (size_t i=0;i<tempVec.size();i++)
-//		 std::cout<<tempVec[i]<<std::endl;
 }
 
 size_t SigiMapper::getCommandIndex(const string &inCommand)
 {
-//	std::cout<<inCommand<<std::endl;
 	size_t index=START;
 	for(; index<=END; index++)
 	{
@@ -109,17 +101,11 @@ size_t SigiMapper::getCommandIndex(const string &inCommand)
 	}
 
 	return END+1;
-
 }
 
 bool SigiMapper::isEmpty(const string &command)
 {
-	if (command=="" || command=="\n")
-	{
-		return true;
-	}
-
-	return false;
+	return (command=="" || command=="\n")?true:false;
 }
 
 
