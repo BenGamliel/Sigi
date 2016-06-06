@@ -11,7 +11,7 @@ Sing::Sing(const size_t commandIndex, const size_t &calcultionCount)
 :SigiCommand(commandIndex),_calcultionCount(calcultionCount)
 {
 
-	std::cout << "Sing::Sing(const size_t commandIndex)" << std::endl;
+//	std::cout << "Sing::Sing(const size_t commandIndex)" << std::endl;
 
 }
 

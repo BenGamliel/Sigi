@@ -10,7 +10,7 @@
 Calculate::Calculate(const size_t commandIndex, size_t &calcultionCount,string const &name):
 SigiCommand(commandIndex),_calcultionCount(calcultionCount),_name(name)
 {
-	std::cout << "Calculate::Calculate(size_t *calcultionCount)" << std::endl;
+//	std::cout << "Calculate::Calculate(size_t *calcultionCount)" << std::endl;
 }
 
 Calculate::~Calculate() {

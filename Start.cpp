@@ -9,7 +9,7 @@
 
 Start::Start(const size_t commandIndex,bool* isAwake, string& name) : SigiCommand(commandIndex), _isAwake(isAwake),_name(name)
 {
-	std::cout << "Start::Start(size_t commandIndex, string name)" << std::endl;
+//	std::cout << "Start::Start(size_t commandIndex, string name)" << std::endl;
 }
 
 Start::~Start() {

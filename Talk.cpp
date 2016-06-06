@@ -10,11 +10,11 @@
 Talk::Talk(const size_t commandIndex, const size_t &calcultionCount, const string &name) :
 	SigiCommand(commandIndex), _calcultionCount(calcultionCount), _name(name)
 	{
-		std::cout << "Talk::Talk(const size_t commandIndex)" << std::endl;
+//		std::cout << "Talk::Talk(const size_t commandIndex)" << std::endl;
 	}
 
 Talk::~Talk() {
-	// TODO Auto-generated destructor stub
+	std::cout << "Talk::!Talk()" << std::endl;
 }
 
 bool Talk::execute(size_t &printIndex, std::vector<string> &input)

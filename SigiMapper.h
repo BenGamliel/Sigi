@@ -30,7 +30,7 @@ public:
 
 
 private:
-	enum Commands {start=0,calculate,talk,sing,end};
+	enum Commands {START=0,calculate,talk,sing,end};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;
@@ -42,10 +42,10 @@ private:
 	static string const _errors[end+2][4];
 
 		// Functions
-	size_t findCommand(string command);
 	bool isReadyToLaunch(size_t commandIndex);
-	void split(std::vector<string> &tempVec,string command);
-	size_t getCommandIndex(string inCommand);
+	void split(std::vector<string> &tempVec,const string &command);
+	size_t getCommandIndex(const string &inCommand);
+	bool isEmpty(const string &command);
 
 };
 
