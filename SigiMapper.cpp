@@ -130,7 +130,7 @@ std::vector <string> SigiMapper::split(string command)
 	 }
 
 	 return tempVec;
-}1
+}
 
 
 /*

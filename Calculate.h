@@ -16,6 +16,8 @@
 #define CALCULATE_H_
 
 #include "SigiCommand.h"
+#include <iostream>
+using namespace std;
 
 class Calculate : public SigiCommand {
 public:
@@ -28,11 +30,12 @@ public:
  * which holds the count of the calculations
  *
  */
-	Calculate(const size_t commandIndex,size_t &calcultionCount);
+	Calculate(const size_t commandIndex,size_t &calcultionCount,string const &name);
 	virtual ~Calculate();
 
 		// Functions
-
+protected:
+	int add(const unsigned int numA,const unsigned int numB,const int factor) const;
 /*
  *
  * bool execute(size_t &commandIndex,size_t &printIndex) -
@@ -45,7 +48,7 @@ public:
  *
  * @ return - true for success, false for error.
  */
-	bool execute(size_t &commandIndex,size_t &printIndex,std::vector<string> &input);
+	bool execute(size_t &commandIndex,std::vector<string> &input);
 
 private:
 	enum Results {ok=0};
@@ -55,7 +58,7 @@ private:
 	size_t &_calcultionCount;
 
 	// Functions
-	int add(const unsigned int numA,const unsigned int numB,const int factor) const;
+
 };
 
 #endif /* CALCULATE_H_ */
