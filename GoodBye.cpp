@@ -7,17 +7,6 @@
 
 #include "GoodBye.h"
 
-GoodBye::GoodBye(const size_t commandIndex, bool *isAwake,const string &name) :
-SigiCommand(commandIndex) , _isAwake(isAwake), _name(name)
-{
-//	std::cout << "GoodBye::GoodBye(const size_t commandIndex, bool *isAwake) = " << (void *)this << std::endl;
-}
-
-GoodBye::~GoodBye()
-{
-//	std::cout << "GoodBye::~GoodBye() = " << (void *)this << std::endl;
-}
-
 bool GoodBye::execute(size_t &printIndex, std::vector<string> &input)
 {
 	std::cout << "Good Bye " << _name << "!"<< std::endl;

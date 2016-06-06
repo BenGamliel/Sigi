@@ -12,8 +12,9 @@
 
 class GoodBye : public SigiCommand {
 public:
-	GoodBye(const size_t commandIndex, bool *is_Awake,const string &_name);
-	virtual ~GoodBye();
+	GoodBye(const size_t commandIndex, bool *isAwake,const string &name) :
+		SigiCommand(commandIndex) , _isAwake(isAwake), _name(name){}
+	virtual ~GoodBye(){}
 
 		// Functions
 	bool execute(size_t &printIndex, std::vector<string> &input);
