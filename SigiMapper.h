@@ -28,7 +28,7 @@ public:
 
 		// Functions
 	void command(const string command);
-	bool isOn(){return ((!_isAwake)&&(_name.size()>0))?false:true;}
+	inline bool isOn(){return ((!_isAwake)&&(_name.size()>0))?false:true;}
 
 
 private:
@@ -45,7 +45,7 @@ private:
 
 		// Functions
 	bool isReadyToLaunch(size_t commandIndex,size_t inputSize);
-	void split(std::vector<string> &tempVec,const string &command);
+	void split(std::vector<string> &input,const string &command);
 	size_t getCommandIndex(const string &inCommand);
 	bool isEmpty(const string &command);
 

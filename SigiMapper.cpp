@@ -69,7 +69,7 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex,size_t inputSize)
 	return false;
 }
 
-void SigiMapper::split(std::vector<string> &tempVec,const string &command)
+void SigiMapper::split(std::vector<string> &input,const string &command)
 {
 	 size_t pos;
 	 size_t startPos=0;
@@ -78,12 +78,12 @@ void SigiMapper::split(std::vector<string> &tempVec,const string &command)
 		 pos=command.find ("<<",startPos);
 		 if(pos==string::npos)
 		 {
-			 tempVec.push_back(command.substr(startPos));
+			 input.push_back(command.substr(startPos));
 			 break;
 		 }
 		 else
 		 {
-			 tempVec.push_back(command.substr(startPos,pos));
+			 input.push_back(command.substr(startPos,pos));
 			 startPos=pos+2;
 		 }
 	 }
@@ -110,15 +110,21 @@ bool SigiMapper::isEmpty(const string &command)
 
 
 string const SigiMapper::_commandList[] =
-{"Hey Sigi! ","Sigi Calculate Please: ","How are you Sigi? ","I want to hear ","Good Bye Sigi! "};
+{
+		"Hey Sigi! ",
+		"Sigi Calculate Please: ",
+		"How are you Sigi? ",
+		"I want to hear ",
+		"Good Bye Sigi! "
+};
 
 string const SigiMapper::_errors[END+2][3] =
 {
-		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"}, //START
-		{"TOO COMPLICATED FOR ME"}, //calculate
-		{}, //talk
-		{"YOUR SONG NAME IS MISSING","I AM NOT FAMILIAR WITH THIS SONG"}, //sing
-		{}, //END
-		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"}, //general
+		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"},//Start
+		{"TOO COMPLICATED FOR ME"}, //Calculate
+		{}, //Talk
+		{"YOUR SONG NAME IS MISSING","I AM NOT FAMILIAR WITH THIS SONG"}, //Sing
+		{}, //End
+		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"}, //General
 };
 
