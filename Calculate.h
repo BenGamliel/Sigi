@@ -14,11 +14,6 @@
 
 #ifndef CALCULATE_H_
 #define CALCULATE_H_
-
-#include "SigiCommand.h"
-
-class Calculate : public SigiCommand {
-public:
 /*
  * Calculate(const size_t commandIndex,size_t *calcultionCount) -
  * The Constructor
@@ -28,11 +23,6 @@ public:
  * which holds the count of the calculations
  *
  */
-	Calculate(const size_t commandIndex,size_t &calcultionCount,string const &name);
-	virtual ~Calculate();
-
-		// Functions
-
 /*
  *
  * bool execute(size_t &commandIndex,size_t &printIndex) -
@@ -45,18 +35,29 @@ public:
  *
  * @ return - true for success, false for error.
  */
-	bool execute(size_t &printIndex,std::vector<string> &input);
+
+#include "SigiCommand.h"
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+class Calculate : public SigiCommand {
+public:
+
+	Calculate(const size_t commandIndex,size_t &calcultionCount,string const &name);
+	virtual ~Calculate(){}
+	bool execute(size_t &commandIndex,std::vector<string> &input);
+	inline int add(const unsigned int numA,const unsigned int numB,const int factor) const
+	{
+		return numA+(factor*numB);
+	}
 
 private:
-	enum Results {ok=0};
-	enum Errors {complicated=0};
-
-		// Variables
 	size_t &_calcultionCount;
-	string const &_name;
-
-	// Functions
-	int add(const unsigned int numA,const unsigned int numB,const int factor=1) const;
+	const string &_name ;
 };
 
 #endif /* CALCULATE_H_ */

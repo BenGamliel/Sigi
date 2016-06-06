@@ -124,7 +124,7 @@ bool SigiMapper::isEmpty(const string &command)
 
 
 string const SigiMapper::_commandList[] =
-{"Hey Sigi! ","Sigi Calculate Please: ","How are you Sigi?","I want to hear ","Good Bye Sigi!"};
+{"Hey Sigi! ","Sigi Calculate Please: ","How are you Sigi? ","I want to hear ","Good Bye Sigi! "};
 
 string const SigiMapper::_errors[END+2][3] =
 {
