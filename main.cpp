@@ -11,11 +11,12 @@ int main()
 {
 	SigiMapper sigi;
 	string n;
-	while (getline(std::cin,n))
+
+	while ((sigi.isOn())&&(getline(std::cin,n)))
+	{
 		sigi.command(n);
+	}
 
 	return 0;
 }
-
-
 

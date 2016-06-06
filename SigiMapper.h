@@ -17,6 +17,7 @@
 #include "Calculate.h"
 #include "Talk.h"
 #include "Sing.h"
+#include "GoodBye.h"
 using std::string;
 
 class SigiMapper {
@@ -27,10 +28,11 @@ public:
 
 		// Functions
 	void command(const string command);
+	bool isOn(){return ((!_isAwake)&&(_name.size()>0))?false:true;}
 
 
 private:
-	enum Commands {START=0,calculate,talk,sing,end};
+	enum Commands {START=0,calculate,talk,sing,END};
 		// Variables
 	SigiCommand** _commands;
 	bool _isAwake;
@@ -39,10 +41,10 @@ private:
 
 		// String Arrays
 	static string const _commandList[];
-	static string const _errors[end+2][4];
+	static string const _errors[END+2][3];
 
 		// Functions
-	bool isReadyToLaunch(size_t commandIndex);
+	bool isReadyToLaunch(size_t commandIndex,size_t inputSize);
 	void split(std::vector<string> &tempVec,const string &command);
 	size_t getCommandIndex(const string &inCommand);
 	bool isEmpty(const string &command);

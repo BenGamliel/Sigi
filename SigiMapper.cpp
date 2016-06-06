@@ -7,7 +7,7 @@
 
 #include "SigiMapper.h"
 
-SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_name(""),_calcultionCount(0)
+SigiMapper::SigiMapper() : _commands(new SigiCommand*[END]),_isAwake(false),_name(""),_calcultionCount(0)
 {
 	//std::cout << "SigiMapper::SigiMapper()" << std::endl;
 
@@ -15,11 +15,12 @@ SigiMapper::SigiMapper() : _commands(new SigiCommand*[end]),_isAwake(false),_nam
 	_commands[calculate] = new Calculate(calculate,_calcultionCount,_name);
 	_commands[talk] = new Talk(talk,_calcultionCount,_name);
 	_commands[sing] = new Sing(sing,_calcultionCount);
+	_commands[END] = new GoodBye(sing,&_isAwake,_name);
 }
 
 SigiMapper::~SigiMapper()
 {
-//	for(size_t commandIndex=0;commandIndex<end;commandIndex++)
+//	for(size_t commandIndex=0;commandIndex<END;commandIndex++)
 //	{
 //		delete _commands[commandIndex];
 //	}
@@ -41,7 +42,7 @@ void SigiMapper::command(const string command)
 	size_t commandIndex=this->getCommandIndex(input[0]);
 //	std::cout<<this->getCommandIndex(input[0])<<std::endl;
 
-	if (isReadyToLaunch(commandIndex))
+	if (isReadyToLaunch(commandIndex,input.size()))
 	{
 		bool activate=_commands[commandIndex]->execute(printIndex,input);
 
@@ -52,11 +53,12 @@ void SigiMapper::command(const string command)
 	}
 }
 
-bool SigiMapper::isReadyToLaunch(size_t commandIndex)
+bool SigiMapper::isReadyToLaunch(size_t commandIndex,size_t inputSize)
 {
-	if ((_isAwake)&&(commandIndex>end))
+	if (((_isAwake)&&(commandIndex>END))||
+			((inputSize>1)&&((commandIndex==END)||(commandIndex==talk))))
 	{
-		std::cerr << _errors[end+1][1] << std::endl;
+		std::cerr << _errors[END+1][1] << std::endl;
 	}
 	else if(((!_isAwake)&&(commandIndex==START))||(_isAwake))
 	{
@@ -64,7 +66,7 @@ bool SigiMapper::isReadyToLaunch(size_t commandIndex)
 	}
 	else
 	{
-		std::cerr << _errors[end+1][0] << std::endl;
+		std::cerr << _errors[END+1][0] << std::endl;
 	}
 	return false;
 }
@@ -95,14 +97,16 @@ void SigiMapper::split(std::vector<string> &tempVec,const string &command)
 size_t SigiMapper::getCommandIndex(const string &inCommand)
 {
 //	std::cout<<inCommand<<std::endl;
-	for(size_t index=START; index<=end; index++)
+	size_t index=START;
+	for(; index<=END; index++)
 	{
 		if(inCommand.compare(_commandList[index])==0)
 		{
 			return index;
 		}
 	}
-	return end+1;
+
+	return END+1;
 
 }
 
@@ -120,13 +124,13 @@ bool SigiMapper::isEmpty(const string &command)
 string const SigiMapper::_commandList[] =
 {"Hey Sigi! ","Sigi Calculate Please: ","How are you Sigi?","I want to hear ","Good Bye Sigi!"};
 
-string const SigiMapper::_errors[end+2][4] =
+string const SigiMapper::_errors[END+2][3] =
 {
 		{"YOUR NAME IS MISSING YOUR", "YOUR NAME IS TOO LONG","I AM UP"}, //START
 		{"TOO COMPLICATED FOR ME"}, //calculate
 		{}, //talk
 		{"YOUR SONG NAME IS MISSING","I AM NOT FAMILIAR WITH THIS SONG"}, //sing
-		{}, //end
+		{}, //END
 		{"SIGI IS ON SLEEP MODE","I DO NOT KNOW, ASK SHIRI"}, //general
 };
 
