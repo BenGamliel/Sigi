@@ -7,41 +7,50 @@
 
 #include "Calculate.h"
 
+
 Calculate::Calculate(const size_t commandIndex, size_t &calcultionCount,string const &name):
-SigiCommand(commandIndex,name),_calcultionCount(calcultionCount),_name(name)
+	SigiCommand(commandIndex),_calcultionCount(calcultionCount), _name(name)
 {
-	std::cout << "Calculate::Calculate(size_t *calcultionCount)" << std::endl;
+	//std::cout << "Calculate::Calculate(size_t *calcultionCount)" << std::endl;
 }
 
 Calculate::~Calculate() {
+
 	// TODO Auto-generated destructor stub
 }
 
-int Calculate::add(const  int &numA,const  int &numB,const int factor) const
+bool Calculate::execute(size_t &printIndex,std::vector<string> &input)
 {
-
-	return numA+(factor*numB);
-}
-
-bool Calculate::execute(size_t &commandIndex,std::vector<string> &input)
-{
-	int numA=input[1];
-	int numB=input[3];
+	bool flag=false;
+	int sign;
+	int numA=atoi((input[1].c_str()));
+	int numB=atoi((input[3].c_str()));
+	size_t foundplus = input[2].rfind("+");
+	size_t foundminus = input[2].rfind("-");
 	if((numA<0)||(numB<0))
 	{
-		cout<<"TOO COMPLICATED FOR ME"<<endl;
+		printIndex=0;
 		return false;
 	}
-	if((input[2]=='+') ||(input[2]=='-'))
+	 if ( (foundminus!=std::string::npos) || (foundplus!=std::string::npos) )
+	 {
+		 flag=true;
+		if(foundplus!=std::string::npos)
+		{
+			sign=1;
+		}
+		else
+			sign=-1;
+	 }
+	if(flag)
 	{
-
-		int result=add(numA,numB,input[2]=='+'?1:-1);
-			_calcultionCount++;
-			cout<<"<"<<"_name"<<"<"<<",the result is"<<result<<endl;
-			return true;
+		int result=add(numA,numB,sign);
+		_calcultionCount++;
+		cout<<_name<<", the result is "<<result;
+		return true;
 	}
+	printIndex=0;
 	return false;
 }
 
-
-//execute(printIndex,input)
+//<Name>, the result is <Number>
