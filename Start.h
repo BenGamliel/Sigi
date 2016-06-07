@@ -15,7 +15,7 @@
  * The Constructor
  *
  *  bool execute(size_t &printIndex,std::vector<string> &input) -
- * Responsible to the execution of the command.
+ * Responsible to the execution of the Start command.
  *
  *
  */
