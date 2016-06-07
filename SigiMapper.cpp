@@ -35,7 +35,7 @@ void SigiMapper::command(const string command)
 
 	size_t printIndex;
 
-	std::vector<string> input = *new std::vector<string>;
+	std::vector<string> input;
 	split(input,command);
 	size_t commandIndex=this->getCommandIndex(input[0]);
 
@@ -48,13 +48,14 @@ void SigiMapper::command(const string command)
 			std::cerr << _errors[commandIndex][printIndex] << std::endl;
 		}
 	}
+
+	input.clear();
 }
 
 bool SigiMapper::isReadyToLaunch(size_t commandIndex,size_t inputSize)
 {
 	if (((_isAwake)&&(commandIndex>END))||
-			((inputSize>1)&&((commandIndex==END)||(commandIndex==TALK)))||
-			((commandIndex==CALCULATE)&&(inputSize!=4)))
+			((inputSize>1)&&((commandIndex==END)||(commandIndex==TALK))))
 	{
 		std::cerr << _errors[END+1][1] << std::endl;
 	}
@@ -83,7 +84,7 @@ void SigiMapper::split(std::vector<string> &input,const string &command)
 		 }
 		 else
 		 {
-			 input.push_back(command.substr(startPos,pos));
+			 input.push_back(command.substr(startPos,(pos-startPos)));
 			 startPos=pos+2;
 		 }
 	 }
