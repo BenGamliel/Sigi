@@ -25,6 +25,12 @@ bool Calculate::execute(size_t &printIndex,std::vector<string> &input)
 	int sign;
 	int numA=atoi((input[1].c_str()));
 	int numB=atoi((input[3].c_str()));
+	if( (input[1].empty()) || (input[3].empty()) || (input[2]=="<+") || (input[2]=="<-"))
+	{
+		printIndex=0;
+		return false;
+	}
+
 	size_t foundplus = input[2].rfind("+");
 	size_t foundminus = input[2].rfind("-");
 	if((numA<0)||(numB<0))
