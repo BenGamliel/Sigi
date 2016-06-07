@@ -9,18 +9,15 @@
 
 bool Start::execute(size_t &printIndex,std::vector<string> &input)
 {
+	if (*_isAwake)
+	{
+		printIndex=ALREADY_AWAKE;
+		return false;
+	}
 	if((input.size()==2)&&(input[1].size()<10))
 	{
-		if ((!(*_isAwake)))
-		{
-			this->wakeUp(input[1]);
-			return true;
-		}
-		else
-		{
-			printIndex=ALREADY_AWAKE;
-			return false;
-		}
+		this->wakeUp(input[1]);
+		return true;
 	}
 
 	input.size()<2?printIndex=NO_NAME:printIndex=NAME_TOO_LONG;
