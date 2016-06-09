@@ -8,6 +8,20 @@
 #ifndef SIGIMAPPER_H_
 #define SIGIMAPPER_H_
 
+/*
+ * This Module is the platform for Sigi commands.
+ * It holds the information about Sigi and give the commands access
+ * according to their needs.
+ *
+ * SigiMapper() - The Constructor
+ *
+ * void command(const string command) -
+ * This method gets the command from the user, interprets it and executes it.
+ *
+ * inline bool isOn() -
+ * Returns the status of conversation.
+ */
+
 #include <iostream>
 #include <string.h>
 #include <vector>
@@ -26,8 +40,19 @@ public:
 	SigiMapper();
 	virtual ~SigiMapper();
 
-		// Functions
+/*
+ * void command(const string command) -
+ * This method gets the command from the user, interprets it and executes it.
+ * @param command - hold the full string command that the user typed.
+ */
 	void command(const string command);
+/*
+ *  inline bool isOn() -
+ * Returns the status of conversation.
+ * @Returns true in case the conversation didn't start yet,
+ * or the conversation is in progress.
+ * Returns false in case the conversation ended.
+ */
 	inline bool isOn(){return ((!_isAwake)&&(_name.size()>0))?false:true;}
 
 
