@@ -14,7 +14,7 @@
  * GoodBye(const size_t commandIndex, bool *isAwake,const string &name) -
  * The Constructor
  *
- * bool execute(size_t &commandIndex,size_t &printIndex) -
+ * bool execute(size_t &printIndex, std::vector<string> &input) -
  * Responsible to the execution of the command.
  *
  */
@@ -37,7 +37,7 @@ public:
 	virtual ~GoodBye(){}
 
 /*
- * bool execute(size_t &commandIndex,size_t &printIndex) -
+ * bool execute(size_t &printIndex, std::vector<string> &input) -
  * Responsible to the execution of the command.
  *
  * @param printIndex - Then function updates this reference variable to hold the

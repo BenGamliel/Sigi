@@ -20,7 +20,7 @@
  * Calculate(const size_t commandIndex,size_t &calcultionCount,
  * string const &name) - The Constructor
  *
- * bool execute(size_t &commandIndex,size_t &printIndex) -
+ * bool execute(size_t &commandIndex,std::vector<string> &input) -
  * Responsible to the execution of the calculation.
  *
  */
@@ -49,13 +49,14 @@ public:
 			_calcultionCount(calcultionCount), _name(name){}
 	virtual ~Calculate(){}
 /*
- * bool execute(size_t &commandIndex,size_t &printIndex) -
+ * bool execute(size_t &commandIndex,std::vector<string> &input) -
  * Responsible to the execution of the calculation.
  *
  * @param printIndex - Then function updates this reference variable to hold the
  *  numeric index of the relevant print string in case of error.
  * Will not change it in case of success.
- * @param input - holds the relevant input for the command
+ * @param input - A vector which holds the command in index 0,
+ * the numbers at indexes 1 and 3 and the arithmetic action in index 2.
  *
  * @ return - true for success, false for error.
  *

@@ -41,7 +41,8 @@ public:
  * @param printIndex - Then function updates this reference variable to hold the
  *  numeric index of the relevant print string in case of error.
  * Will not change it in case of success.
- * @param input - A vector which holds the relevant input for the command.
+ * @param input - A vector which holds the command in index 0
+ * and the relevant input for the command in the rest.
  *
  * @ return - true for success, false for error.
  */
