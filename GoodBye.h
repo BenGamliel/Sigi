@@ -14,14 +14,29 @@
  * GoodBye(const size_t commandIndex, bool *isAwake,const string &name) -
  * The Constructor
  *
+ * bool execute(size_t &commandIndex,size_t &printIndex) -
+ * Responsible to the execution of the command.
+ *
+ */
+#include "SigiCommand.h"
+
+class GoodBye : public SigiCommand {
+public:
+/*
+ * GoodBye(const size_t commandIndex, bool *isAwake,const string &name) -
+ * The Constructor
+ *
  * @param commandIndex - sets the numeric index of the command
  * @param isAwake - a pointer to the variable in SigiMapper
  * which holds the On/Off Mode of the system.
  * @param name - a string reference to the user's name variable.
  * Will not change it.
- *
- *
- *
+ */
+	GoodBye(const size_t commandIndex, bool *isAwake,const string &name) :
+		SigiCommand(commandIndex) , _isAwake(isAwake), _name(name){}
+	virtual ~GoodBye(){}
+
+/*
  * bool execute(size_t &commandIndex,size_t &printIndex) -
  * Responsible to the execution of the command.
  *
@@ -34,15 +49,6 @@
  * @ return - true for success, false for error.
  *
  */
-#include "SigiCommand.h"
-
-class GoodBye : public SigiCommand {
-public:
-	GoodBye(const size_t commandIndex, bool *isAwake,const string &name) :
-		SigiCommand(commandIndex) , _isAwake(isAwake), _name(name){}
-	virtual ~GoodBye(){}
-
-		// Functions
 	bool execute(size_t &printIndex, std::vector<string> &input);
 
 private:
