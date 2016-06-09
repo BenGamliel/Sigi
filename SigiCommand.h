@@ -9,6 +9,9 @@
 #define SIGICOMMAND_H_
 
 /*
+ * This Module is responsible to to used as general interface to a command.
+ * This Module is Abstract.
+ *
  * SigiCommand(size_t commandIndex):_commandIndex(commandIndex) -
  * The Constructor
  *
@@ -38,7 +41,7 @@ public:
  * @param printIndex - Then function updates this reference variable to hold the
  *  numeric index of the relevant print string in case of error.
  * Will not change it in case of success.
- * @param input - A vector which holds the relevant input for the command
+ * @param input - A vector which holds the relevant input for the command.
  *
  * @ return - true for success, false for error.
  */
